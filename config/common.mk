@@ -85,6 +85,14 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     vendor/cm/prebuilt/common/etc/init.d/90userinit:system/etc/init.d/90userinit
 
+# new hosts for gapps
+PRODUCT_COPY_FILES += \
+    vendor/cm/proprietary/etc/hosts:system/etc/hosts
+
+# OTA update support
+PRODUCT_COPY_FILES += \
+    vendor/cm/proprietary/OTAUpdater.apk:system/app/OTAUpdater.apk
+
 # Compcache/Zram support
 PRODUCT_COPY_FILES += \
     vendor/cm/prebuilt/common/etc/init.local.rc:system/etc/init.local.rc \
@@ -133,17 +141,9 @@ PRODUCT_PACKAGES += \
 
 # Optional CM packages
 PRODUCT_PACKAGES += \
-    VideoEditor \
-    VoiceDialer \
     SoundRecorder \
-    Basic \
-    HoloSpiralWallpaper \
-    MagicSmokeWallpapers \
-    NoiseField \
-    Galaxy4 \
     LiveWallpapers \
     LiveWallpapersPicker \
-    VisualizationWallpapers \
     PhaseBeam
 
 # Custom CM packages
@@ -153,7 +153,11 @@ PRODUCT_PACKAGES += \
     libcyanogen-dsp \
     audio_effects.conf \
     CMWallpapers \
-    Apollo
+    Apollo \
+    MusicFX \
+    Torch \
+    Launcher2 \
+    FileManager
 
 # Extra tools in CM
 PRODUCT_PACKAGES += \
@@ -179,40 +183,19 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGE_OVERLAYS += vendor/cm/overlay/dictionaries
 PRODUCT_PACKAGE_OVERLAYS += vendor/cm/overlay/common
 
-PRODUCT_VERSION_MAJOR = 10
+PRODUCT_VERSION_MAJOR = ToxMod
 PRODUCT_VERSION_MINOR = 0
 PRODUCT_VERSION_MAINTENANCE = 0-RC0
 
-# Set CM_BUILDTYPE
-ifdef CM_NIGHTLY
-    CM_BUILDTYPE := NIGHTLY
-endif
-ifdef CM_EXPERIMENTAL
-    CM_BUILDTYPE := EXPERIMENTAL
-endif
-ifdef CM_RELEASE
-    CM_BUILDTYPE := RELEASE
-endif
+# We are ToxMod
+TEAM_HEAD = ToxMod
 
-ifdef CM_BUILDTYPE
-    ifdef CM_EXTRAVERSION
-        # Force build type to EXPERIMENTAL
-        CM_BUILDTYPE := EXPERIMENTAL
-        # Add leading dash to CM_EXTRAVERSION
-        CM_EXTRAVERSION := -$(CM_EXTRAVERSION)
-    endif
-else
-    # If CM_BUILDTYPE is not defined, set to UNOFFICIAL
-    CM_BUILDTYPE := UNOFFICIAL
-    CM_EXTRAVERSION :=
-endif
+# Set BUILDTYPE
+    BUILDTYPE := NIGHTLY
+    EXTRAVERSION :=
 
-ifdef CM_RELEASE
-    CM_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE)$(PRODUCT_VERSION_DEVICE_SPECIFIC)-$(CM_BUILD)
-else
-    CM_VERSION := $(PRODUCT_VERSION_MAJOR)-$(shell date -u +%Y%m%d)-$(CM_BUILDTYPE)-$(CM_BUILD)$(CM_EXTRAVERSION)
-endif
-
+    CM_VERSION := $(PRODUCT_VERSION_MAJOR)-$(shell date -u +%Y%m%d)-$(BUILDTYPE)-$(CM_BUILD)$(CM_EXTRAVERSION)
+    VERSION := $(TEAM_HEAD)-$(shell date -u +%Y%m%d)-$(BUILDTYPE)-$(TEAM_BUILDER)
 PRODUCT_PROPERTY_OVERRIDES += \
   ro.cm.version=$(CM_VERSION) \
-  ro.modversion=$(CM_VERSION)
+  ro.modversion=$(VERSION)
