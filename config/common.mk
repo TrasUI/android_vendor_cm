@@ -87,11 +87,11 @@ PRODUCT_COPY_FILES += \
 
 # new hosts for gapps
 PRODUCT_COPY_FILES += \
-    vendor/cm/proprietary/etc/hosts:system/etc/hosts
+    vendor/cm/prebuilt/common/etc/hosts:system/etc/hosts
 
 # OTA update support
 PRODUCT_COPY_FILES += \
-    vendor/cm/proprietary/OTAUpdater.apk:system/app/OTAUpdater.apk
+    vendor/cm/prebuilt/common/OTAUpdater.apk:system/app/OTAUpdater.apk
 
 # Compcache/Zram support
 PRODUCT_COPY_FILES += \
