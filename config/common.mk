@@ -91,7 +91,7 @@ PRODUCT_COPY_FILES += \
 
 # OTA update support
 PRODUCT_COPY_FILES += \
-    vendor/cm/prebuilt/common/OTAUpdater.apk:system/app/OTAUpdater.apk
+    vendor/cm/prebuilt/common/apps/OTAUpdater.apk:system/app/OTAUpdater.apk
 
 # Compcache/Zram support
 PRODUCT_COPY_FILES += \
