@@ -142,10 +142,7 @@ PRODUCT_PACKAGES += \
 # Optional CM packages
 PRODUCT_PACKAGES += \
     Basic \
-    SoundRecorder \
-    LiveWallpapers \
-    LiveWallpapersPicker \
-    PhaseBeam
+    SoundRecorder
 
 # Custom CM packages
 PRODUCT_PACKAGES += \
