@@ -104,7 +104,6 @@ PRODUCT_COPY_FILES += \
     vendor/cm/prebuilt/common/bin/modelid_cfg.sh:system/bin/modelid_cfg.sh
 
 PRODUCT_COPY_FILES +=  \
-    vendor/cm/proprietary/RomManager.apk:system/app/RomManager.apk \
     vendor/cm/proprietary/Term.apk:system/app/Term.apk \
     vendor/cm/proprietary/lib/armeabi/libjackpal-androidterm4.so:system/lib/libjackpal-androidterm4.so
 
@@ -194,8 +193,8 @@ TEAM_HEAD = ToxMod
     BUILDTYPE := NIGHTLY
     EXTRAVERSION :=
 
-    CM_VERSION := $(PRODUCT_VERSION_MAJOR)-$(shell date -u +%Y%m%d)-$(BUILDTYPE)-$(CM_BUILD)$(CM_EXTRAVERSION)
-    VERSION := $(TEAM_HEAD)-$(shell date -u +%Y%m%d)-$(BUILDTYPE)-$(TEAM_BUILDER)
+    TM_VERSION := $(PRODUCT_VERSION_MAJOR)-$(shell date -u +%Y%m%d)-$(BUILDTYPE)-$(CM_BUILD)$(CM_EXTRAVERSION)
+    VERSION := $(TARGET_DEVICE) $(PLATFORM_VERSION) $(BUILD_ID) $(shell date -u +%Y%m%d) by $(TEAM_BUILDER)
 PRODUCT_PROPERTY_OVERRIDES += \
-  ro.cm.version=$(CM_VERSION) \
+  ro.cm.version=$(TM_VERSION) \
   ro.modversion=$(VERSION)
