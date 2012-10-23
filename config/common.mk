@@ -194,7 +194,7 @@ TEAM_HEAD = ToxMod
     EXTRAVERSION :=
 
     TM_VERSION := $(PRODUCT_VERSION_MAJOR)-$(shell date -u +%Y%m%d)-$(BUILDTYPE)-$(CM_BUILD)$(CM_EXTRAVERSION)
-    VERSION := $(TARGET_DEVICE) $(PLATFORM_VERSION) $(BUILD_ID) $(shell date -u +%Y%m%d) by $(TEAM_BUILDER)
+    VERSION := $(TARGET_PRODUCT)-$(PLATFORM_VERSION)-$(BUILD_ID)-$(shell date -u +%Y%m%d)-$(TEAM_BUILDER)
 PRODUCT_PROPERTY_OVERRIDES += \
   ro.cm.version=$(TM_VERSION) \
-  ro.modversion=$(VERSION)
+  ro.modversion=$(VERSION)/
